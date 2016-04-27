@@ -1,4 +1,7 @@
-The mine.jl package is licensed under the MIT "Expat" License:
+The c part in MINE.jl inlicensed under GPLv3 License.
+	Please check http://minepy.sourceforge.net/docs/1.0.0/index.html#
+
+The MINE.jl package is licensed under the MIT "Expat" License:
 
 > Copyright (c) 2016: zhmz90.
 > 
