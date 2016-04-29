@@ -5,12 +5,10 @@ module MINE
 
 function __init__()
     if !isfile(libmine)
-        @linux_ony cd("c") do
-            run(`make libmine.so`)
+        @unix ? cd("c") do
+            run(`make libmine`)
         end
-        @osx_ony cd("c") do
-            run(`make libmine.dylab`)
-        end
+        : error("MINE.jl current doesn't support Windows now")
     end
 end
 
