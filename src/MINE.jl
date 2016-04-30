@@ -3,6 +3,8 @@ module MINE
 @linux_only const libmine = joinpath(dirname(@__FILE__), "c/libmine.so")
 @osx_only const libmine = joinpath(dirname(@__FILE__), "c/libmine.dylab")
 
+export Problem, Parameter, Score, compute_score, check_parameter, mch, mic, mas, mev, mch_general
+
 function __init__()
     if !isfile(libmine)
         if OS_NAME != :Windows
