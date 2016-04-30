@@ -8,7 +8,7 @@ export Problem, Parameter, Score, compute_score, check_parameter, mch, mic, mas,
 function __init__()
     if !isfile(libmine)
         if OS_NAME != :Windows
-            cd("c") do
+            cd(dirname(libmine)) do
                 run(`make libmine`)
             end
         else
@@ -34,10 +34,10 @@ macro fncall(fn, return_type, argtypes, args...)
     end
 end
 
+
 include("type.jl")
 include("fn.jl")
 include("utils.jl")
 #include("api.jl")
-include("quick_api.jl")
 
 end

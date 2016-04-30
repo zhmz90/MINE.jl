@@ -11,10 +11,20 @@ function mch(pscore::Ptr{Score}, eps::Cdouble)
     @fncall(:mine_mch, Cdouble, (Ptr{Score}, Cdouble), pscore, eps)
 end
 
-for fn in (:mic,:mas,:mev,:mch_general)
+#=
+for func in (:mic,:mas,:mev,:mch_general)
     @eval quote
-        function $fn(score::Ptr{Score})
-            @fncall($fn, Cdouble, (Ptr{Score},), score)
+        function func(score::Ptr{Score})
+            @fncall(symbol("mine_", $func), Cdouble, (Ptr{Score},), score)
+        end
+    end
+end
+=#
+
+for func in (:mic, :mas, :mev, :mch_general)
+    @eval begin
+        function $func(score::Ptr{Score})
+            ccall((symbol("mine_", $func), $libmine), Cdouble, (Ptr{Score},), score)
         end
     end
 end
