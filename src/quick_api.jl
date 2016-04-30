@@ -7,10 +7,14 @@ function compute_score!(mine::MINE)
     mine.score = unsafe_load(pscore)
 end
 
-for func in [:mic, :mas, :mev, :mch, :mch_general]
+function mch(pscore::Ptr{Score}, eps::Cdouble)
+    @fncall(:mine_mch, Cdouble, (Ptr{Score}, Cdouble), pscore, eps)
+end
+
+for func in [:mic, :mas, :mev, :mch_general]
     @eval quote
         function $func(pscore::Ptr{Score})
-            ccall((:string("mine_",$func), $libmine),Float64,(Ptr{Score},), pscore)
+            @fncall(string("mine_",$func),Float64,(Ptr{Score},), pscore)
         end
     end)
 end
