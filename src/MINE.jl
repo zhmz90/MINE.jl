@@ -35,6 +35,7 @@ end
 include("type.jl")
 include("fn.jl")
 include("utils.jl")
-include("api.jl")
+#include("api.jl")
+include("quick_api.jl")
 
 end
