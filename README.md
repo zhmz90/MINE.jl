@@ -14,15 +14,18 @@ There are also other language wrappers avaiable in [Python](http://minepy.source
 	x = rand(3)
 	y = rand(3)
 	mine = MINE(x,y)
-	compute_scores!(mine)
 	compute_stats!(mine)
 	stats = mine.stats
 ```
 
 ### APIs
 ```Julia
-	function compute_score!(mine::MINE)
     function compute_stats!(mine::MINE)
+	function compute_mic!(mine::MINE)
+	function compute_mas!(mine::MINE)
+	function compute_mev!(mine::MINE)
+	function compute_mch!(mine::MINE)
+	function compute_mch_general!(mine::MINE)	
 ```
 
 ### References
